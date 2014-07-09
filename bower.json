@@ -1,0 +1,7 @@
+{
+  "name": "fancy-box#gh-pages",
+  "private": true,
+  "dependencies": {
+    "fancy-box": "andressanchez/fancy-box#master"
+  }
+}

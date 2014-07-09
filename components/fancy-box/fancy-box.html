@@ -1,0 +1,129 @@
+<!--
+A Polymer element to create a box with a logo, text and options.
+
+##### Example
+
+    <fancy-box logo="fa-ra" label="Another Example" opt_icon_1="fa-paw" opt_icon_2="fa-tree" opt_icon_3="fa-codepen"></fancy-box>
+
+@element fancy-box
+@blurb A Polymer element to create a box with a logo, text and options.
+@status alpha
+@homepage https://github.com/andressanchez/fancy-box
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-icon-button/core-icon-button.html">
+<link rel="import" href="../fontawesome-icon/fontawesome-icon.html">
+
+<polymer-element name="fancy-box" attributes="logo label opt_icon_1 opt_icon_2 opt_icon_3">
+    <template>
+
+        <link rel="stylesheet" href="fancy-box.css" />
+
+        <div id="fancy-box">
+            <core-card class="hidden-options">
+                <core-icon-button id="opt-btn-1" class="option-btn" on-click="{{opt_handler_1}}"><fontawesome-icon id="logo" value="fa {{opt_icon_1}} fa-fw"></fontawesome-icon></core-icon-button>
+                <core-icon-button id="opt-btn-2" class="option-btn" on-click="{{opt_handler_2}}"><fontawesome-icon id="logo" value="fa {{opt_icon_2}} fa-fw"></fontawesome-icon></core-icon-button>
+                <core-icon-button id="opt-btn-3" class="option-btn" on-click="{{opt_handler_3}}"><fontawesome-icon id="logo" value="fa {{opt_icon_3}} fa-fw"></fontawesome-icon></core-icon-button>
+            </core-card>
+            <core-card class="fancy-card" on-click="{{box_handler}}" layout vertical>
+                <fontawesome-icon id="logo" value="fa {{logo}} fa-2x"></fontawesome-icon>
+                <p id="label">{{label}}</p>
+            </core-card>
+        </div>
+
+    </template>
+
+    <script>
+        Polymer('fancy-box', {
+
+            /**
+             * `logo` is the card logo
+             *
+             * For further information, please see:
+             * http://andressanchez.github.io/fontawesome-icon/
+             *
+             * @attribute logo
+             * @type string
+             */
+            logo: 'fa-cloud',
+
+            /**
+             * `label` is the text associated to the card
+             *
+             * @attribute label
+             * @type string
+             */
+            label: 'Example',
+
+            /**
+             * `opt_icon_1` is the first option icon
+             *
+             * For further information, please see:
+             * http://andressanchez.github.io/fontawesome-icon/
+             *
+             * @attribute opt_icon_1
+             * @type string
+             */
+            opt_icon_1: 'fa-trash-o',
+
+            /**
+             * `opt_icon_2` is the second option icon
+             *
+             * For further information, please see:
+             * http://andressanchez.github.io/fontawesome-icon/
+             *
+             * @attribute opt_icon_2
+             * @type string
+             */
+            opt_icon_2: 'fa-gear',
+
+            /**
+             * `opt_icon_3` is the third option icon
+             *
+             * For further information, please see:
+             * http://andressanchez.github.io/fontawesome-icon/
+             *
+             * @attribute opt_icon_3
+             * @type string
+             *
+             */
+            opt_icon_3: 'fa-arrows',
+
+            /**
+             * The `box_click` event is fired when the box is clicked
+             * @event box_click
+             *
+             */
+            box_handler: function() {
+                this.fire("box_click");
+            },
+
+            /**
+             * The `opt_click_1` event is fired when the first option button is clicked
+             * @event opt_click_1
+             */
+            opt_handler_1: function() {
+                this.fire("opt_click_1");
+            },
+
+            /**
+             * The `opt_click_2` event is fired when the second option button is clicked
+             * @event opt_click_2
+             */
+            opt_handler_2: function() {
+                this.fire("opt_click_2");
+            },
+
+            /**
+             * The `opt_click_3` event is fired when the third option button is clicked
+             * @event opt_click_3
+             */
+            opt_handler_3: function() {
+                this.fire("opt_click_3");
+            }
+        });
+
+    </script>
+
+</polymer-element>
